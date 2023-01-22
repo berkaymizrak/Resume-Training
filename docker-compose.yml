@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     env_file:
       - resume/docker.env
+    volumes:
+      - .:/srv/app
     ports:
       - "0.0.0.0:8000:8000"
     command: python manage.py runserver 0.0.0.0:8000
