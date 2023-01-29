@@ -58,16 +58,26 @@ $(document).ready(function(){
                 $(form).ajaxSubmit({
                     type:"POST",
                     data: $(form).serialize(),
-                    url:"contact_process.php",
-                    success: function() {
-                        $('#contactForm :input').attr('disabled', 'disabled');
-                        $('#contactForm').fadeTo( "slow", 1, function() {
-                            $(this).find(':input').attr('disabled', 'disabled');
-                            $(this).find('label').css('cursor','default');
-                            $('#success').fadeIn()
-                            $('.modal').modal('hide');
-		                	$('#success').modal('show');
-                        })
+                    url:"/contact/contact_form",
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success) {
+                            $('#contactForm :input').attr('disabled', 'disabled');
+                            $('#contactForm').fadeTo( "slow", 1, function() {
+                                $(this).find(':input').attr('disabled', 'disabled');
+                                $(this).find('label').css('cursor','default');
+                                $('#success').fadeIn()
+                                $('.modal').modal('hide');
+                                $('#success').modal('show');
+                            })
+                        } else {
+                            $('#contactForm').fadeTo( "slow", 1, function() {
+                                $('#error').fadeIn()
+                                $('.modal').modal('hide');
+                                $('#error').modal('show');
+                            })
+                        }
+
                     },
                     error: function() {
                         $('#contactForm').fadeTo( "slow", 1, function() {
