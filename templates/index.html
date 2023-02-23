@@ -128,42 +128,27 @@
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <ul class="list">
-                            <li>
-                                <span></span>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <p>March 2017 to present</p>
+                            {% for education in educations %}
+                                <li>
+                                    <span></span>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <p>{{ education.start_date|date:"M Y" }} -
+                                                {% if education.end_date %}
+                                                    {{ education.end_date|date:"M Y" }}
+                                                {% else %}
+                                                    Present
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>{{ education.school_name }}</h4>
+                                            <p>{{ education.major }} <br/>{{ education.department }}</p>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>Colorlib</h4>
-                                        <p>Senior Web Developer <br/>Santa monica, Los angeles</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <span></span>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <p>March 2017 to present</p>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Colorlib</h4>
-                                        <p>Senior Web Developer <br/>Santa monica, Los angeles</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <span></span>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <p>March 2017 to present</p>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Colorlib</h4>
-                                        <p>Senior Web Developer <br/>Santa monica, Los angeles</p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            {% endfor %}
+
                         </ul>
                     </div>
                 </div>
