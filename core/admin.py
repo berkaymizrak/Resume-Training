@@ -1,6 +1,7 @@
 from django.contrib import admin
 from core.models import *
 
+
 # Register your models here.
 
 @admin.register(GeneralSetting)
@@ -12,6 +13,7 @@ class GeneralSettingAdmin(admin.ModelAdmin):
     class Meta:
         model = GeneralSetting
 
+
 @admin.register(ImageSetting)
 class ImageSettingAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'description', 'file', 'updated_date', 'created_date']
@@ -20,6 +22,7 @@ class ImageSettingAdmin(admin.ModelAdmin):
 
     class Meta:
         model = ImageSetting
+
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
@@ -30,23 +33,28 @@ class SkillAdmin(admin.ModelAdmin):
     class Meta:
         model = Skill
 
+
 @admin.register(Experience)
 class ExperienceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'company_name', 'job_title', 'job_location', 'start_date', 'end_date', 'updated_date', 'created_date']
+    list_display = ['id', 'company_name', 'job_title', 'job_location', 'start_date', 'end_date', 'updated_date',
+                    'created_date']
     search_fields = ['company_name', 'job_title', 'job_location', ]
     list_editable = ['company_name', 'job_title', 'job_location', 'start_date', 'end_date', ]
 
     class Meta:
         model = Experience
 
+
 @admin.register(Education)
 class EducationAdmin(admin.ModelAdmin):
-    list_display = ['id', 'school_name', 'major', 'department', 'start_date', 'end_date', 'updated_date', 'created_date']
+    list_display = ['id', 'school_name', 'major', 'department', 'start_date', 'end_date', 'updated_date',
+                    'created_date']
     search_fields = ['school_name', 'major', 'department', ]
     list_editable = ['school_name', 'major', 'department', 'start_date', 'end_date', ]
 
     class Meta:
         model = Education
+
 
 @admin.register(SocialMedia)
 class SocialMediaAdmin(admin.ModelAdmin):
@@ -56,3 +64,13 @@ class SocialMediaAdmin(admin.ModelAdmin):
 
     class Meta:
         model = SocialMedia
+
+
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ['id', 'order', 'slug', 'button_text', 'file', 'updated_date', 'created_date']
+    search_fields = ['slug', 'button_text', ]
+    list_editable = ['order', 'slug', 'button_text', 'file', ]
+
+    class Meta:
+        model = Document
