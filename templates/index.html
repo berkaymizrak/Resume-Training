@@ -25,9 +25,9 @@
                                     <li><a href="#"><i class="lnr lnr-home"></i> Santa monica bullevard</a></li>
                                 </ul>
                                 <ul class="list personal_social">
-                                    <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    {% for social in social_medias %}
+                                        <li><a href="{{ social.link }}" target="_blank">{{ social.icon|safe }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
