@@ -134,13 +134,14 @@ if DEBUG:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 else:
     AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
 
+    DEFAULT_FILE_STORAGE = 'resume.custom_storages.MediaStorage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     AWS_DEFAULT_ACL = 'public-read'
@@ -151,6 +152,8 @@ else:
 
     STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
     STATIC_ROOT = STATIC_URL
+
+    MEDIA_LOCATION = 'media'
 
 
 # Default primary key field type
