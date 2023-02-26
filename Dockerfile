@@ -23,4 +23,4 @@ RUN pip install -r /tmp/requirements.txt
 COPY . /srv/app
 WORKDIR /srv/app
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/srv/app/entrypoint.sh"]
