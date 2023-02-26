@@ -4,20 +4,38 @@ from core.models import GeneralSetting, ImageSetting, Skill, Experience, Educati
 
 # Create your views here.
 
+def get_general_setting(parameter):
+    try:
+        obj = GeneralSetting.objects.get(name=parameter).parameter
+    except:
+        obj = ''
+
+    return obj
+
+
+def get_image_setting(parameter):
+    try:
+        obj = ImageSetting.objects.get(name=parameter).file
+    except:
+        obj = ''
+
+    return obj
+
+
 def layout(request):
-    site_title = GeneralSetting.objects.get(name='site_title').parameter
-    site_keywords = GeneralSetting.objects.get(name='site_keywords').parameter
-    site_description = GeneralSetting.objects.get(name='site_description').parameter
-    home_banner_name = GeneralSetting.objects.get(name='home_banner_name').parameter
-    home_banner_title = GeneralSetting.objects.get(name='home_banner_title').parameter
-    home_banner_description = GeneralSetting.objects.get(name='home_banner_description').parameter
-    about_myself_welcome = GeneralSetting.objects.get(name='about_myself_welcome').parameter
-    about_myself_footer = GeneralSetting.objects.get(name='about_myself_footer').parameter
+    site_title = get_general_setting('site_title')
+    site_keywords = get_general_setting('site_keywords')
+    site_description = get_general_setting('site_description')
+    home_banner_name = get_general_setting('home_banner_name')
+    home_banner_title = get_general_setting('home_banner_title')
+    home_banner_description = get_general_setting('home_banner_description')
+    about_myself_welcome = get_general_setting('about_myself_welcome')
+    about_myself_footer = get_general_setting('about_myself_footer')
 
     # Images
-    header_logo = ImageSetting.objects.get(name='header_logo').file
-    home_banner_image = ImageSetting.objects.get(name='home_banner_image').file
-    site_favicon = ImageSetting.objects.get(name='site_favicon').file
+    header_logo = get_image_setting('header_logo')
+    home_banner_image = get_image_setting('home_banner_image')
+    site_favicon = get_image_setting('site_favicon')
 
     social_medias = SocialMedia.objects.all()
     documents = Document.objects.all()
