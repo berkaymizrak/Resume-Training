@@ -20,7 +20,11 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 ADD ./requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
+COPY entrypoint.sh /srv/entrypoint.sh
+RUN sed -i 's/\r$//g' /srv/entrypoint.sh
+RUN chmod +x /srv/entrypoint.sh
+
 COPY . /srv/app
 WORKDIR /srv/app
 
-ENTRYPOINT ["/srv/app/entrypoint.sh"]
+ENTRYPOINT ["/srv/entrypoint.sh"]
