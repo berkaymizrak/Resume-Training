@@ -6,3 +6,5 @@ Pillow==9.4.0
 psycopg2==2.9.5
 sqlparse==0.4.3
 tzdata==2022.7
+boto3
+django-storages
